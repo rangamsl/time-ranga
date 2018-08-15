@@ -1,0 +1,55 @@
+body {
+    background-color: lightgray;
+}
+
+ .btn-info {
+    color: #3498db;
+    font-size: 16px;
+    background: transparent !important;
+    border:none !important; outline: none !important;
+
+}
+ .btn-info i {
+    color: #3498db;
+  }
+
+
+     .btn-success {
+    color: #62cb31;
+    font-size: 16px;
+    background: transparent !important;
+    border:none !important; outline: none !important;
+
+}
+ .btn-success i {
+    color: #62cb31;
+    }
+
+        .btn-danger {
+    color: #e74c3c;
+    font-size: 16px;
+    background: transparent !important;
+    border:none !important;
+    outline: none !important;
+
+}
+ .btn-danger i {
+    color: #e74c3c;
+    }
+
+input[type="time"] {
+    border:none;
+}
+
+.pro-name {
+    width: 100%;
+    border: #eaeaea;
+    height: 30px;
+    padding-left: 5px;
+}
+.pro-dis {
+    width: 100%;
+    border: #eaeaea;
+        height: 30px;
+    padding-left: 5px;
+}

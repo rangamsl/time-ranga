@@ -1,0 +1,9 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+# TEST:
+#cron:
+#    path: /cron
+#    controller: App\Controller\CronController::cron
+

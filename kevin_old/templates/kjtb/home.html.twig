@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ controller_name }}!{% endblock %}
+
+{% block body %}
+
+<p>
+	See details for this page at:
+	<ul>
+		<li>The controller at <code><a href="{{ 'src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
+		<li>The template at <code><a href="{{ 'templates/kjtb/home.html.twig'|file_link(0) }}">templates/kjtb/admin/get_updated.html.twig</a></code></li>
+	</ul>
+	✅
+</p>
+{% endblock %}

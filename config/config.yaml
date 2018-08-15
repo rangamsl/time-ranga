@@ -1,0 +1,9 @@
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     'localhost'
+        dbname:   'i2time'
+        user:     'root'
+        password: ''
+        mapping_types:
+          enum: string

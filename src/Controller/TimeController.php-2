@@ -1,0 +1,48 @@
+<?php
+namespace App\Controller;
+
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+/**
+ * @Route("/time-log")
+ */
+class TimeLogController
+{
+    /**
+     * @var \Twig_Environment
+     */
+    private $environment;
+    /**
+    /**
+     * @var \Twig_Environment
+     */
+    private $twig;
+    /**
+     * @var TimeRepository
+     */
+    private $timeRepository;
+
+    public function __construct(\Twig_Environment $twig, TimeRepository $timeRepository)
+    {
+        $this->twig = $twig;
+        $this->timeRepository = $timeRepository;
+    }
+
+
+    /**
+     * @Route("/", name="time_log_index")
+     */
+    public function index()
+    {
+        $html = $this->twig->render('time-log/index.html.twig', [
+            'poat' => $this->timeRepository->findAll()
+        ]);
+        return new Response($html);
+
+    }
+}

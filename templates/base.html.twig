@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+
+            <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.css') }}">
+
+            <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/fontawesome/css/font-awesome.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/metisMenu/dist/metisMenu.css') }}" >
+            <link rel="stylesheet" href="{{ asset('assets/vendor/animate.css/animate.css')}}" >
+            <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.css')}}" >
+            <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" >
+
+            <link rel="stylesheet" href="{{ asset('assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}" >
+            <link rel="stylesheet" href="{{ asset('assets/fonts/pe-icon-7-stroke/css/helper.css')}}" >
+            <link rel="stylesheet" href="{{ asset('assets/styles/style.css')}}">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/css/bootstrap-datetimepicker.min.css">
+        {% endblock %}
+    </head>
+    <body class="fixed-navbar sidebar-scroll">
+
+    <!-- Header -->
+    <div id="header">
+        <div class="color-line">
+        </div>
+        <div id="logo" class="light-version">
+        <span>
+            <i><img src="{{ asset('assets/images/logo.svg') }}" width="140" height="42" alt=""></i>
+        </span>
+        </div>
+        <nav role="navigation">
+            <div class="header-link hide-menu"><i class="fa fa-bars"></i></div>
+
+            <form role="search" class="navbar-form-custom" method="post" action="#">
+                <div class="form-group">
+                    <input type="text" placeholder="Search something special" class="form-control" name="search">
+                </div>
+            </form>
+            <div class="mobile-menu">
+                <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse" data-target="#mobile-collapse">
+                    <i class="fa fa-chevron-down"></i>
+                </button>
+                <div class="collapse mobile-navbar" id="mobile-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a class="" href="login.html">Login</a>
+                        </li>
+                        <li>
+                            <a class="" href="login.html">Logout</a>
+                        </li>
+                        <li>
+                            <a class="" href="profile.html">Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar-right">
+                <ul class="nav navbar-nav no-borders tooltip-demo text-center">
+                    <li>
+                        <a  href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="Category">
+                            <!-- <i class="pe-7s-speaker"></i> -->
+                            <i><img src="{{ asset('assets/images/category.svg')}}" width="25" height="25" alt=""></i>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a  href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="Label">
+                            <i><img src="{{ asset('assets/images/label.svg')}}"  width="25" height="25" alt=""></i>
+                        </a>
+
+
+                    </li>
+                    <li >
+                        <a class="label-menu-corner" href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="Priority">
+
+                            <i><img src="{{ asset('assets/images/priority.svg')}}"  width="28" height="28" alt="" ></i>
+
+                        </a>
+
+                    </li>
+
+                    <li class="">
+                        <a  href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="Logout">
+                            <i><img src="{{ asset('assets/images/logout.svg')}}"  width="25" height="25" alt=""></i>
+                        </a>
+
+                    </li>
+                </ul>
+
+
+
+            </div>
+        </nav>
+    </div>
+
+    <!-- Navigation -->
+    <aside id="menu">
+        <div id="navigation">
+            <div class="profile-picture">
+                <a href="index.html">
+                    <img src="{{ asset('assets/images/avatar.png')}}" width="76" height="76" class="img-circle m-b" alt="logo">
+                </a>
+
+                <div class="stats-label text-color">
+                    <span class="font-extra-bold font-uppercase">Admin</span>
+
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                            <small class="text-muted">Founder of App <b class="caret"></b></small>
+                        </a>
+                        <ul class="dropdown-menu animated flipInX m-t-xs">
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="analytics.html">Analytics</a></li>
+                            <li class="divider"></li>
+                            <li><a href="login.html">Logout</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div id="sparkline1" class="small-chart m-t-sm"></div>
+
+                </div>
+            </div>
+
+            <ul class="nav" id="side-menu">
+
+                <li>
+                    <a href="index.html">
+                        <i><img src="{{ asset('assets/images/projects.svg')}}"  width="18" height="18" alt=""></i>
+                        Projects</a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <i><img src="{{ asset('assets/images/requests.svg')}}"  width="18" height="18" alt=""></i>
+                        Requests</a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <i><img src="{{ asset('assets/images/calendar.svg')}}"  width="18" height="18" alt=""></i>
+                        Targets</a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <i><img src="{{ asset('assets/images/Time.svg')}}"  width="18" height="18" alt=""></i>
+                        Time Log</a>
+                </li>
+
+
+            </ul>
+        </div>
+    </aside>
+
+    <div id="wrapper">
+        <div class="content">
+        {% block body %}
+
+
+        {% endblock %}
+        </div>
+
+        <footer class="footer">
+
+            2018 i2 Internet Incorporated.
+        </footer>
+
+        {% block javascripts %}
+            {#<script src="{{ asset('assets/js/app.js') }}"></script>#}
+
+            <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+
+          <script src="{{ asset('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/slimScroll/jquery.slimscroll.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
+            <script src="{{ asset('assets/vendor/metisMenu/dist/metisMenu.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/iCheck/icheck.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/sparkline/index.js') }}"></script>
+
+            <script src="{{ asset('assets/vendor/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+
+            <script src="{{ asset('assets/vendor/pdfmake/build/pdfmake.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/pdfmake/build/vfs_fonts.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
+
+            <script src="{{ asset('assets/scripts/homer.js') }}"></script>
+
+
+
+            <script>
+
+                $(function () {
+
+                    // Initialize Example 1
+                    $('#example1').dataTable( {
+                        "ajax": 'api/datatables.json',
+                        dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+                        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+                        buttons: [
+                            {extend: 'copy',className: 'btn-sm'},
+                            {extend: 'csv',title: 'ExampleFile', className: 'btn-sm'},
+                            {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
+                            {extend: 'print',className: 'btn-sm'}
+                        ]
+                    });
+
+                    // Initialize Example 2
+                    $('#example2').dataTable();
+
+                });
+
+
+                $(function () {
+                    $('#datetimepicker1').datetimepicker();
+                });
+            </script>
+
+
+
+
+        {% endblock %}
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+    </body>
+</html>
