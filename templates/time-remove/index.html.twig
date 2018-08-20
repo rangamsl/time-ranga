@@ -8,7 +8,7 @@
 
             <div class="hpanel">
                 <div class="panel-heading">
-                    <div style="float: left;"><a href="{{ path('time_log_add')  }}">Add New</a></div>
+
                     <div class="panel-tools">
 
                         <a class="showhide"><i class="fa fa-chevron-up"></i></a>
@@ -62,27 +62,27 @@
 
 
                         {% for post in posts %}
-                        <tr>
-                            <td>{{ post.hours|date('d-m-Y ') }}</td>
-                            <td>{{ post.projectid }}</td>
-                            <td>{{ post.description }} </td>
-                            <td class="time">
+                            <tr>
+                                <td>{{ post.time|date("d/m/y") }}</td>
+                                <td>{{ post.projectid }}</td>
+                                <td>{{ post.description }} </td>
+                                <td class="time">
 
-                                <table>
-                                    <tr>
-                                        <td valign="top" width="80%" style="border-right: 1px #ccc solid;padding-right: 5px;">{{ post.timenotes }} </td>
-                                        <td valign="top" width="20%" style="padding-left: 5px;"> {{ post.minutes|date(' H:i:s') }}</td>
-                                    </tr>
-                                </table>
-                            </td>
+                                    <table>
+                                        <tr>
+                                            <td valign="top" width="80%" style="border-right: 1px #ccc solid;padding-right: 5px;">{{ post.timenotes }} </td>
+                                            <td valign="top" width="20%" style="padding-left: 5px;"> {{ post.hours }} </td>
+                                        </tr>
+                                    </table>
+                                </td>
 
 
 
-                            <td><button type="button" class="btn-simple btn btn-xs btn-info"><i class="fa fa-user"></i></button><button type="button" class="btn-simple btn btn-xs btn-success"><i class="fa fa-edit"></i></button><button type="button" class="btn-simple btn btn-xs btn-danger"><i class="fa fa-times"></i></button></td>
+                                <td><button type="button" class="btn-simple btn btn-xs btn-info"><i class="fa fa-user"></i></button><button type="button" class="btn-simple btn btn-xs btn-success"><i class="fa fa-edit"></i></button><button type="button" class="btn-simple btn btn-xs btn-danger"><i class="fa fa-times"></i></button></td>
 
-                        </tr>
+                            </tr>
 
-                    {%endfor  %}
+                        {%endfor  %}
 
 
 

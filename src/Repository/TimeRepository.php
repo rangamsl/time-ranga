@@ -2,12 +2,9 @@
 
 namespace App\Repository;
 
-
 use App\Entity\Time;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Doctrine\Common\Collections\Collection;
-use App\Controller\TimeLogController;
 
 /**
  * @method Time|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,9 +16,65 @@ class TimeRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct
-        ($registry, TimeLogController::class);
+        parent::__construct($registry, Time::class);
     }
 
+    /**
+     * @return Time[] Returns an array of Time objects
+     */
+    public function findRecent($maxResults = 10)
+    {
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.id', 'DESC')
+            ->setMaxResults($maxResults)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
+    /**
+     * @return Time[] Returns an array of Time objects
+     */
+    public function findHourMinutesToDo()
+    {
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.id', 'DESC')
+            ->andWhere('t.hours is NULL')
+            ->andWhere('t.minutes is NULL')
+//            ->andWhere('t.id = 23538')
+//            ->andWhere('t.hours < 0')
+//            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+//    /**
+//     * @return Time[] Returns an array of Time objects
+//     */
+    /*
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('t.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    */
+
+    /*
+    public function findOneBySomeField($value): ?Time
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
 }

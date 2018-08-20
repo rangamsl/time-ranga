@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+btn-success@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
 .h-modal-icon{
     font-size:66px
 }
@@ -567,8 +567,8 @@
     border-color:#8c49a7
 }
 .btn-success{
-    background-color:#62cb31;
-    border-color:#62cb31;
+    background-color:#62cb31 !important;
+    border-color:#62cb31 !important;
     color:#fff
 }
 .btn-success:hover,.btn-success:focus,.btn-success:active,.btn-success.active,.open .dropdown-toggle.btn-success{

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+   {% block body %}
+<div class="register-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center m-b-md">
+                <h3>Registration</h3>
+                <small>Full suported AngularJS WebApp/Admin template with very clean and aesthetic style prepared for your next app. </small>
+            </div>
+            <div class="hpanel">
+                <div class="panel-body">
+
+
+                        {{ form_start(form) }}
+
+                        {{ form_widget(form) }}
+
+                        {{ form_end(form) }}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+   {% endblock %}
