@@ -196,36 +196,12 @@
             <script src="{{ asset('assets/vendor/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
 
             <script src="{{ asset('assets/scripts/homer.js') }}"></script>
+            <script src="{{ asset('assets/js/main.js') }}"></script>
 
 
 
-            <script>
-
-                $(function () {
-
-                    // Initialize Example 1
-                    $('#example1').dataTable( {
-                        "ajax": 'api/datatables.json',
-                        dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
-                        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-                        buttons: [
-                            {extend: 'copy',className: 'btn-sm'},
-                            {extend: 'csv',title: 'ExampleFile', className: 'btn-sm'},
-                            {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
-                            {extend: 'print',className: 'btn-sm'}
-                        ]
-                    });
-
-                    // Initialize Example 2
-                    $('#example2').dataTable();
-
-                });
 
 
-                $(function () {
-                    $('#datetimepicker1').datetimepicker();
-                });
-            </script>
 
 
 

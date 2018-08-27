@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\TimeRepository")
+ */
+class Time
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+    /**
+     * @ORM\Column(type="text" , length=100)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $timenotes;
+
+    // Getters & Setters
+
+    public function getId(){
+        return $this->id;
+    }
+
+    public function getDescription(){
+        return $this->description;
+    }
+
+    public function setDescription($description){
+       $this->description =$description;
+    }
+
+    public function getTimenotes(){
+        return $this->timenotes;
+    }
+
+    public function setTimenotes($timenotes){
+       $this->timenotes=$timenotes;
+    }
+
+
+
+}

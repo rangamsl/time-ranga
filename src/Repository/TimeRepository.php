@@ -41,9 +41,16 @@ class TimeRepository extends ServiceEntityRepository
             ->orderBy('t.id', 'DESC')
             ->andWhere('t.hours is NULL')
             ->andWhere('t.minutes is NULL')
-//            ->andWhere('t.id = 23538')
+            ->andWhere('t.gratishours is NULL')
+            ->andWhere('t.gratisminutes is NULL')
+            /* For Testing:
+            ->andWhere('t.id = 10542')
+			// TESTED: 23180, 24234, 23538, 23276, 24198, 24126, 24074, 24030, 23938, 20230, 10140, 15720, 10542, 9279
+//            ->andWhere('t.id = 23538 OR t.id = 23276')
 //            ->andWhere('t.hours < 0')
+//            ->andWhere("t.malformed <> ''")
 //            ->setMaxResults(1)
+			*/
             ->getQuery()
             ->getResult()
         ;

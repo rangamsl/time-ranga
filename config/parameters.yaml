@@ -1,5 +1,7 @@
-parameters:
-    database_host:      localhost
-    database_name:      i2time
-    database_user:      root
-    database_password:  
+# Currently Unused:
+#parameters:
+#    database_host:      127.0.0.1
+#    database_port:      3306
+#    database_name:      db_name
+#    database_user:      db_user
+#    database_password:  db_password

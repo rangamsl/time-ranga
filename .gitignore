@@ -1,3 +1,7 @@
+### Added by KJTB ###
+_env
+_gitignore
+
 
 ###> symfony/framework-bundle ###
 /.env
