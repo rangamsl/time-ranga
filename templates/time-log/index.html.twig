@@ -8,7 +8,9 @@
 
             <div class="hpanel">
                 <div class="panel-heading">
+                    {% if is_granted('ROLE_USER') %}
                     <div style="float: left;"><a href="{{ path('new_time_log')  }}">Add New</a></div>
+                    {% endif %}
                     <div class="panel-tools">
 
                         <a class="showhide"><i class="fa fa-chevron-up"></i></a>
@@ -22,7 +24,7 @@
                         <thead>
                         <tr>
                             <th width="15%">Date</th>
-                            <th width="15%">Project Id</th>
+                            <th width="15%">Project Name</th>
 
                             <th >Description</th>
                             <th width="30%">Time Notes</th>
@@ -31,34 +33,34 @@
                             <th>Salary</th> -->
                         </tr>
                         </thead>
-                        <tbody>
+                        {#<tbody>#}
 
-                        <tr style="background: #d5dae2; ">
-                            <td>
-                                <div class='input-group date' id='datetimepicker1'>
-                                    <input type='text' class="form-control" />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                     </span>
-                                </div>
-
-
-                            </td>
-                            <td><input type="text" class="pro-name" placeholder="Project Name"></td>
-                            <td><textarea name="" class="pro-dis" placeholder="Description" id="" ></textarea></td>
-                            <td class="time">
-
-                                <input type="text" class="pro-name" placeholder="Time Notes">
-
-                            </td>
+                        {#<tr style="background: #d5dae2; ">#}
+                            {#<td>#}
+                                {#<div class='input-group date' id='datetimepicker1'>#}
+                                    {#<input type='text' class="form-control" />#}
+                                    {#<span class="input-group-addon">#}
+                                        {#<span class="glyphicon glyphicon-calendar"></span>#}
+                                     {#</span>#}
+                                {#</div>#}
 
 
+                            {#</td>#}
+                            {#<td><input type="text" class="pro-name" placeholder="Project Name"></td>#}
+                            {#<td><textarea name="" class="pro-dis" placeholder="Description" id="" ></textarea></td>#}
+                            {#<td class="time">#}
 
-                            <td><button type="button" class="btn-simple btn btn-sm  btn-primary "><i class="fa fa-check"></i>  Submit</button></td>
+                                {#<input type="text" class="pro-name" placeholder="Time Notes">#}
 
-                        </tr>
+                            {#</td>#}
 
-                        </tbody>
+
+
+                            {#<td><button type="button" class="btn-simple btn btn-sm  btn-primary "><i class="fa fa-check"></i>  Submit</button></td>#}
+
+                        {#</tr>#}
+
+                        {#</tbody>#}
 
                         <tbody>
 
@@ -66,7 +68,7 @@
                         {% for post in posts %}
                         <tr>
                             <td>{{ post.day|date('d-m-Y ') }}</td>
-                            <td>{{ post.projectid }}</td>
+                            <td>{{ post.projectcode }}</td>
 
                             <td>{{ post.description }} </td>
                             <td class="time">
@@ -83,10 +85,13 @@
 
                             <td>
                                 {#<button type="button" class="btn-simple btn btn-xs btn-info"><i class="fa fa-user"></i></button>#}
-                                <a href="/time-log/edit/ class="btn-simple btn btn-xs btn-success"><i class="fa fa-edit"></i></a>
-                                {#<button type="button" class="btn-simple btn btn-xs btn-danger" data-id="{{ times.id }}"><i class="fa fa-times"></i></button></td>#}
+                                <a href="/time-log/edit/{{ post.id }}" class="btn-simple btn btn-xs btn-success"><i class="fa fa-edit"></i></a>
+
+                                <a  href="#" class="btn-simple btn btn-xs btn-danger" data-id="{{ post.id }}"><i class="fa fa-times"></i></a>
+
+                            </td>
                                 {# <a href="#" class="btn-simple btn btn-xs btn-danger" data-id="">Delete</a>#}
-                               <a href="#" class="btn-simple btn btn-xs btn-danger" data-id="{{ times.id  }}">Delete</a>
+                               {#<a href="#" class="btn-simple btn btn-xs btn-danger" data-id="{{ post.id }}">Delete</a>#}
                         </tr>
 
                     {%endfor  %}

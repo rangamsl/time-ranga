@@ -18,20 +18,33 @@ class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username', TextType::class)
-            ->add('email', EmailType::class)
-            ->add('plainPassword', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'first_options' => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repated password']
+        $builder->add('username', TextType::class,[
+            'attr' => array('class' => 'form-control m-b')
+        ])
+            ->add('email', EmailType::class,[
+                'attr' => array('class' => 'form-control m-b')
             ])
-            ->add('fullName', TextType::class)
+            ->add('plainPassword', RepeatedType::class, [
+                'attr' => array('class' => 'form-control m-b'),
+                'type' => PasswordType::class ,'attr' => array('class' => 'form-control m-b'),
+                'first_options' => ['label' => 'Password',
+                'attr' => array('class' => 'form-control m-b')],
+                'second_options' => ['label' => 'Repated password',
+                'attr' => array('class' => 'form-control m-b')]
+
+            ])
+            ->add('fullName', TextType::class,[
+                'attr' => array('class' => 'form-control m-b')
+            ])
             ->add('termsAgreed', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => new IsTrue(),
-                'label' => 'I agree to the terms of service'
+                'label' => 'I agree to the terms of service ',
+                'attr' => array('class' => 'i-checks')
             ])
-            ->add('Register', SubmitType::class);
+            ->add('Register', SubmitType::class ,[
+                'attr' => array('class' => 'btn btn-primary')
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -8,11 +8,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController
 {
-    /**
-     * @var \Twig_Environment
-     */
-    private $twig;
-
     public function  __construct(\Twig_Environment $twig)
     {
         $this->twig = $twig;
@@ -32,11 +27,11 @@ class SecurityController
         ));
     }
 
-    /**
-     * @Route("/logout", name="security_logout")
-     */
-    public function  logout()
-    {
-
-    }
+ //   /**
+   //  * @Route("/logout", name="security_login")
+   //  */
+//    public function  logout()
+//    {
+//
+//    }
 }

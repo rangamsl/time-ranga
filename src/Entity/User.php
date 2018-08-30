@@ -14,26 +14,33 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity(fields="email", message="This e-mail is already used")
  * @UniqueEntity(fields="username", message="This username is already used")
  */
-class User implements  UserInterface, \Serializable
+
+/*    remove  ( Serializable  ) to fix login issues  (RMK)*/
+//class User implements UserInterface, \Serializable
+
+class User implements UserInterface
 {
+    const ROLE_USER = 'ROLE_USER';
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+
+
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
     private $id;
 
-    /*
+    /**
      * @ORM\Column(type="string", length=50, unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(min=5, max=50)
      */
     private $username;
 
-    /*
-   * @ORM\Column(type="string")
-   */
-
+    /**
+     * @ORM\Column(type="string")
+     */
     private $password;
 
     /**
@@ -42,30 +49,59 @@ class User implements  UserInterface, \Serializable
      */
     private $plainPassword;
 
-
     /**
      * @ORM\Column(type="string", length=191, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
      */
-
     private $email;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank()
      * @Assert\Length(min=4, max=50)
-   */
+     */
+    private $fullName;
 
 
-    private $fullname;
+
+
+
+
+    /**
+     * @var  array
+     * @ORM\Column(type="simple_array")
+     */
+
+    private $roles;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Time", mappedBy="user")
+     */
+    private $posts;
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
+
 
     public function getRoles()
     {
-        return [
-          'ROLE_USER'
-        ];
+        return $this->roles;
     }
+
+    /**
+     * @param array $roles
+     */
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
+    }
+
+
+
 
     public function getPassword()
     {
@@ -79,7 +115,7 @@ class User implements  UserInterface, \Serializable
 
     public function getUsername()
     {
-       return $this->username;
+        return $this->username;
     }
 
     public function eraseCredentials()
@@ -89,18 +125,70 @@ class User implements  UserInterface, \Serializable
 
     public function serialize()
     {
-        return $this->serialize([
-           $this->id,
-           $this->username,
-           $this->password
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password
         ]);
     }
 
-    public function unserialize($serialized)
+
+    /*    Comment this function  to fix login issues  (RMK)*/
+
+//    public function unserialize($serialized)
+//    {
+//        list(
+//            $this->id, $this->username, $this->password, $this->enabled
+//            ) = unserialize($serialized);
+//    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
     {
-       list($this->id,
-           $this->username,
-           $this->password) =  unserialize($serialized);
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFullName()
+    {
+        return $this->fullName;
+    }
+
+    /**
+     * @param mixed $fullName
+     */
+    public function setFullName($fullName): void
+    {
+        $this->fullName = $fullName;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username): void
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
+    {
+        $this->password = $password;
     }
 
     /**
@@ -109,14 +197,6 @@ class User implements  UserInterface, \Serializable
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
     }
 
     /**
@@ -138,50 +218,15 @@ class User implements  UserInterface, \Serializable
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getPosts()
     {
-        return $this->email;
+        return $this->posts;
     }
 
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email): void
-    {
-        $this->email = $email;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getFullname()
-    {
-        return $this->fullname;
-    }
 
-    /**
-     * @param mixed $fullname
-     */
-    public function setFullname($fullname): void
-    {
-        $this->fullname = $fullname;
-    }
 
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username): void
-    {
-        $this->username = $username;
-    }
 
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password): void
-    {
-        $this->password = $password;
-    }
 
 
 }

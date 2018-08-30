@@ -134,6 +134,11 @@ class Time
      * @ORM\Column(name="modified", type="datetime", nullable=true) */
     private $modified;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="posts")
+     * @ORM\JoinColumn()
+     */
+    private $user;
 
 
     // -------------------------------
@@ -186,6 +191,22 @@ class Time
     // -- modified --
     public function getModified(): ?\DateTime {return $this->modified;}
     public function setModified(\DateTime $modified): self {$this->modified = $modified; return $this;}
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
 
 
 }

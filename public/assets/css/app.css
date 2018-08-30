@@ -58,3 +58,13 @@ input[type="time"] {
     border-color: #62cb31 !important;
     color: #fff;
 }
+
+#times .btn-xs {
+    border-radius: 3px;
+    font-size: 18px;
+    line-height: 1.5;
+    width: 30px;
+    height: 30px;
+    border:none !important;
+
+}

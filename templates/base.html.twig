@@ -63,6 +63,7 @@
             </div>
             <div class="navbar-right">
                 <ul class="nav navbar-nav no-borders tooltip-demo text-center">
+
                     <li>
                         <a  href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="Category">
                             <!-- <i class="pe-7s-speaker"></i> -->
@@ -87,7 +88,7 @@
                     </li>
 
                     <li class="">
-                        <a  href="#" data-toggle="tooltip" data-placement="bottom" data-original-title="Logout">
+                        <a  href="{{ path('security_login') }}" data-toggle="tooltip" data-placement="bottom" data-original-title="Logout">
                             <i><img src="{{ asset('assets/images/logout.svg')}}"  width="25" height="25" alt=""></i>
                         </a>
 
@@ -109,7 +110,13 @@
                 </a>
 
                 <div class="stats-label text-color">
-                    <span class="font-extra-bold font-uppercase">Admin</span>
+                    <span class="font-extra-bold font-uppercase">
+                         {% if is_granted('ROLE_USER') %}
+
+                        <a class=""  href="#">{{ app.user.fullName }}</a>
+
+                         {% endif %}
+                    </span>
 
                     <div class="dropdown">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
@@ -120,7 +127,7 @@
                             <li><a href="profile.html">Profile</a></li>
                             <li><a href="analytics.html">Analytics</a></li>
                             <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
+                            <li><a href="{{ path('security_login') }}">Logout</a></li>
                         </ul>
                     </div>
 
@@ -198,14 +205,33 @@
             <script src="{{ asset('assets/scripts/homer.js') }}"></script>
             <script src="{{ asset('assets/js/main.js') }}"></script>
 
+            <script>
+
+                $(function () {
+
+                    // Initialize Example 1
+                    // $('#times2').dataTable( {
+                    //     "ajax": 'api/datatables.json',
+                    //     dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+                    //     "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+                    //     buttons: [
+                    //         {extend: 'copy',className: 'btn-sm'},
+                    //         {extend: 'csv',title: 'ExampleFile', className: 'btn-sm'},
+                    //         {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
+                    //         {extend: 'print',className: 'btn-sm'}
+                    //     ]
+                    // });
+
+                    // Initialize Example 2
+                    $('#times').dataTable();
+
+                });
 
 
-
-
-
-
-
-
+                // $(function () {
+                //     $('#datetimepicker1').datetimepicker();
+                // });
+            </script>
         {% endblock %}
 
 
